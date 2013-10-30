@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Web LED Controller</title>
+ 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+ 		<link rel="stylesheet" type="text/css" href="style.css">
+	
+		<script> 
+			$(document).ready(function(){
+					$('#on_1').click(function(){
+						httpGet("http://10.199.133.183:8080/?serverfunction=redLedSwitch&value=1");
+					});
+
+					$('#off_1').click(function(){
+						httpGet("http://10.199.133.183:8080/?serverfunction=redLedSwitch&value=0");
+					});
+
+
+					$('#on_2').click(function(){
+						httpGet("http://10.199.133.183:8080/?serverfunction=blueLedSwitch&value=1");
+					});
+
+					$('#off_2').click(function(){
+						httpGet("http://10.199.133.183:8080/?serverfunction=blueLedSwitch&value=0");
+					});
+
+
+					// get
+				    function httpGet( theUrl ){
+		 
+					    var xmlHttp = null;
+		 
+					    xmlHttp = new XMLHttpRequest();
+					    xmlHttp.open( 'GET', theUrl, false );
+					    xmlHttp.send( null );
+		 
+					    return xmlHttp.responseText;
+				    }
+
+			});
+		 </script>
+	</head>
+	<body>
+		<h3>RED LED</h3>
+		<button id="on_1" class="btn btn-success">On</button>
+		<button id="off_1" class="btn btn-danger">Off</button>
+		<br/><br/><br/><br/>
+		<h3>BLUE LED</h3>
+		<button id="on_2" class="btn btn-success">On</button>
+		<button id="off_2" class="btn btn-danger">Off</button>
+	</body>
